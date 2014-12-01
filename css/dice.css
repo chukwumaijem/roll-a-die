@@ -1,0 +1,63 @@
+
+#dice-table {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.dice-outer {
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 0;
+    height: 0;
+    perspective: 1000px;
+    margin-right: 64px;
+
+    transform: rotateX(-15deg);
+    transform-style: preserve-3d;
+
+    animation: dice-movement 3s linear both;
+    -webkit-animation: dice-movement 3s linear both;
+}
+
+.dice {
+    display: inline-block;
+    position: absolute;
+
+    width: 32px;
+    height: 32px;
+
+    transform-style: preserve-3d;
+    transform-origin: center center;
+}
+
+.dice .dice-face {
+    position: absolute;
+    transform-origin: center center;
+    backface-visibility: hidden;
+    background: white;
+
+    width: 32px;
+    height: 32px;
+    border: 2px solid #aaa;
+}
+
+.dice .dice-face:nth-child(1) {
+    transform: translateZ(16px);
+}
+.dice .dice-face:nth-child(2) {
+    transform: rotateY(-90deg) translateZ(16px);
+}
+.dice .dice-face:nth-child(3) {
+    transform: rotateX(-90deg) translateZ(16px);
+}
+.dice .dice-face:nth-child(4) {
+    transform: rotateX(90deg) translateZ(16px);
+}
+.dice .dice-face:nth-child(5) {
+    transform: rotateY(90deg) translateZ(16px);
+}
+.dice .dice-face:nth-child(6) {
+    transform: rotateY(180deg) translateZ(16px);
+}

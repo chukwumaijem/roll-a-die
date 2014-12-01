@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/dice.css">
+    <link rel="stylesheet" href="css/anim.css">
+</head>
+<body>
+    <input type="number" value=2>
+    <button>roll</button>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/dice.js"></script>
+    <script>
+        $(function () {
+            var n = 0;
+            $('button').click(function (e) {
+                e.preventDefault();
+                var n = +$('input').val();
+                var log = [];
+                for (var i = 0; i < n; ++i) {
+                    var r = Math.floor(Math.random() * 6) + 1;
+                    log.push(r);
+                    dice6(r);
+                }
+                console.log(log);
+            });
+        });
+    </script>
+</body>
+</html>
