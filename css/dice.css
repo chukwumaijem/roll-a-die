@@ -17,8 +17,13 @@
     transform: rotateX(-15deg);
     transform-style: preserve-3d;
 
+    -webkit-transform: rotateX(-15deg);
+    -webkit-transform-style: preserve-3d;
+
     animation: dice-movement 3s linear both;
     -webkit-animation: dice-movement 3s linear both;
+
+    z-index: 9999;
 }
 
 .dice {
@@ -30,13 +35,20 @@
 
     transform-style: preserve-3d;
     transform-origin: center center;
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: center center;
 }
 
 .dice .dice-face {
     position: absolute;
+    background: white;
+
     transform-origin: center center;
     backface-visibility: hidden;
-    background: white;
+
+    -webkit-transform-origin: center center;
+    -webkit-backface-visibility: hidden;
 
     width: 32px;
     height: 32px;
@@ -45,19 +57,25 @@
 
 .dice .dice-face:nth-child(1) {
     transform: translateZ(16px);
+    -webkit-transform: translateZ(16px);
 }
 .dice .dice-face:nth-child(2) {
     transform: rotateY(-90deg) translateZ(16px);
+    -webkit-transform: rotateY(-90deg) translateZ(16px);
 }
 .dice .dice-face:nth-child(3) {
     transform: rotateX(-90deg) translateZ(16px);
+    -webkit-transform: rotateX(-90deg) translateZ(16px);
 }
 .dice .dice-face:nth-child(4) {
     transform: rotateX(90deg) translateZ(16px);
+    -webkit-transform: rotateX(90deg) translateZ(16px);
 }
 .dice .dice-face:nth-child(5) {
     transform: rotateY(90deg) translateZ(16px);
+    -webkit-transform: rotateY(90deg) translateZ(16px);
 }
 .dice .dice-face:nth-child(6) {
     transform: rotateY(180deg) translateZ(16px);
+    -webkit-transform: rotateY(180deg) translateZ(16px);
 }

@@ -6,7 +6,7 @@
     };
 })();
 
-var dice6 = function (n) {
+var dice6 = function (n, callback) {
     var a = $('audio');
     var volume = (a.length > 0) ? a[0].volume : 1;
     var audio = $('<audio>').attr('id', 'dice-sound').attr('src', 'sound/nc93322.mp3').appendTo(document.body).each(function () {
@@ -47,10 +47,13 @@ var dice6 = function (n) {
         outer.fadeOut(function () {
             this.remove();
             audio.remove();
+            if (callback) {
+                callback();
+            }
         });
     }, 3 * 1000);
 };
 
 $(function () {
-    $('<div>').attr('id', 'dice-table').prependTo(document.body);
+    $('<div>').attr('id', 'dice-table').appendTo(document.body);
 });
