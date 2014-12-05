@@ -1,8 +1,8 @@
-
 #dice-table {
     position: fixed;
     top: 0;
     left: 0;
+    height: 0;
 }
 
 .dice-outer {
@@ -13,6 +13,7 @@
     height: 0;
     perspective: 1000px;
     margin-right: 64px;
+    margin-bottom: 32px;
 
     transform: rotateX(-15deg);
     transform-style: preserve-3d;
@@ -22,8 +23,6 @@
 
     animation: dice-movement 3s linear both;
     -webkit-animation: dice-movement 3s linear both;
-
-    z-index: 9999;
 }
 
 .dice {
