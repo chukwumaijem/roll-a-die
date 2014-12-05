@@ -1,0 +1,27 @@
+{
+  "name": "cssdice",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ukatama/cssdice",
+  "authors": [
+    "ukatama"
+  ],
+  "description": "Simple animated dice with CSS",
+  "main": "js/dice.js",
+  "keywords": [
+    "dice",
+    "css",
+    "javascript",
+    "d6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
