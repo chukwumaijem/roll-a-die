@@ -42,3 +42,7 @@ and latest version of jQuery
 
 ## How to use
 See "dice.html"
+
+![Press a button](https://raw.github.com/ukatama/cssdice/master/img/ss01.png)
+![Dice rolling](https://raw.github.com/ukatama/cssdice/master/img/ss02.png)
+![Result](https://raw.github.com/ukatama/cssdice/master/img/ss03.png)
