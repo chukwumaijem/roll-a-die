@@ -7,6 +7,9 @@ describe('dice3d', function() {
         var table = document.getElementById('dice3d-table');
         Array.prototype.forEach.call(table.children, e => table.removeChild(e));
     });
+    
+    document.body.appendChild(document.createElement('audio'))
+        .id = 'dice3d-sound';
 
     it('should animate 6 faces dice', function() {
         var dice3d = require('../js/dice3d.js');

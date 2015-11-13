@@ -1,15 +1,15 @@
 {
-    "name": "cssdice",
-    "version": "1.0.0",
-    "homepage": "https://github.com/ukatama/cssdice",
+    "name": "dice3d",
+    "version": "0.1.0",
+    "homepage": "https://github.com/ukatama/dice3d",
     "authors": [
         "ukatama"
     ],
-    "description": "Simple animated dice with CSS",
+    "description": "Simple 3D dice roll animator by CSS3 Animation",
     "main": [
-        "js/dice.js",
-        "css/dice.css",
-        "css/anim.css"
+        "dist/dice3d.js",
+        "dist/dice3d.css",
+        "dist/nc93322.mp3"
     ],
     "keywords": [
         "dice",
@@ -20,13 +20,13 @@
     "license": "MIT",
     "ignore": [
         "**/.*",
-        "node_modules",
         "bower_components",
-        "test",
-        "tests",
-        "img"
-    ],
-    "dependencies": {
-        "jquery": "~2.1.1"
-    }
+        "dice.html",
+        "gulpfile.js",
+        "img",
+        "js",
+        "less",
+        "node_modules",
+        "__tests__"
+    ]
 }
