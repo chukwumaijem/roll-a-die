@@ -1,0 +1,36 @@
+{
+  "name": "dice3d",
+  "version": "0.1.0",
+  "description": "Simple animation of dice",
+  "main": "index.js",
+  "dependencies": {
+    "jest-cli": "^0.7.1",
+    "gulp": "^3.9.0",
+    "gulp-webserver": "^0.9.1"
+  },
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-util": "^3.0.7",
+    "watchify": "^3.6.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukatama/dice3d.git"
+  },
+  "keywords": [
+    "dice",
+    "CSS3D",
+    "animation"
+  ],
+  "author": "ukatama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ukatama/dice3d/issues"
+  },
+  "homepage": "https://github.com/ukatama/dice3d"
+}
