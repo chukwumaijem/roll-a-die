@@ -5,7 +5,7 @@
     height: 0;
 }
 
-.dice-outer {
+.dice3d-outer {
     box-sizing: border-box;
     display: inline-block;
     position: relative;
@@ -14,6 +14,8 @@
     perspective: 1000px;
     margin-right: 64px;
     margin-bottom: 32px;
+
+    transition: opacity 1s ease-in-out;
 
     transform: rotateX(-15deg);
     transform-style: preserve-3d;
@@ -25,7 +27,7 @@
     -webkit-animation: dice-movement 3s linear both;
 }
 
-.dice {
+.dice3d {
     display: inline-block;
     position: absolute;
 
@@ -39,7 +41,7 @@
     -webkit-transform-origin: center center;
 }
 
-.dice .dice-face {
+.dice3d .dice3d-face {
     position: absolute;
     background: white;
 
@@ -52,29 +54,30 @@
     width: 32px;
     height: 32px;
     border: 2px solid #aaa;
+    box-sizing: border-box;
 }
 
-.dice .dice-face:nth-child(1) {
+.dice3d .dice3d-face:nth-child(1) {
     transform: translateZ(16px);
     -webkit-transform: translateZ(16px);
 }
-.dice .dice-face:nth-child(2) {
+.dice3d .dice3d-face:nth-child(2) {
     transform: rotateY(-90deg) translateZ(16px);
     -webkit-transform: rotateY(-90deg) translateZ(16px);
 }
-.dice .dice-face:nth-child(3) {
+.dice3d .dice3d-face:nth-child(3) {
     transform: rotateX(-90deg) translateZ(16px);
     -webkit-transform: rotateX(-90deg) translateZ(16px);
 }
-.dice .dice-face:nth-child(4) {
+.dice3d .dice3d-face:nth-child(4) {
     transform: rotateX(90deg) translateZ(16px);
     -webkit-transform: rotateX(90deg) translateZ(16px);
 }
-.dice .dice-face:nth-child(5) {
+.dice3d .dice3d-face:nth-child(5) {
     transform: rotateY(90deg) translateZ(16px);
     -webkit-transform: rotateY(90deg) translateZ(16px);
 }
-.dice .dice-face:nth-child(6) {
+.dice3d .dice3d-face:nth-child(6) {
     transform: rotateY(180deg) translateZ(16px);
     -webkit-transform: rotateY(180deg) translateZ(16px);
 }

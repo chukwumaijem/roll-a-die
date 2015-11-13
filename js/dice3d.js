@@ -1,59 +1,87 @@
-(function () {
-    $.fn.dice6 = function (eye) {
-        if (!eye) {
-            eye = Math.floor(Math.random() * 6) + 1;
-        }
-    };
-})();
+var table;
 
-var dice6 = function (n, callback) {
-    var a = $('audio');
-    var volume = (a.length > 0) ? a[0].volume : 1;
-    var audio = $('<audio>').attr('id', 'dice-sound').attr('src', 'sound/nc93322.mp3').appendTo(document.body).each(function () {
-        setTimeout(function () {
-            this.volume = volume;
-            this.play();
-        }.bind(this), Math.random() * 500);
-    });
+var init = function() {
+    table = document.createElement('div');
+    table.id = 'dice3d-table';
+    document.body.appendChild(table);
 
-    var angle = {
-        1: [90, 0],
-        2: [0, 90],
-        3: [180, 0],
-        4: [0, 0],
-        5: [0, -90],
-        6: [-90, 0],
-    }[n];
-    var outer = $('<div>').addClass('dice-outer').appendTo('#dice-table');
-    var dice = $('<div>')
-        .addClass('dice')
-        .css('transform', 'rotateX(' + angle[0] + 'deg) rotateZ(' + angle[1] + 'deg)')
-        .prependTo(outer);
-
-    var eyes = {
-        1: '<svg class=dice-face width=32 height=32><circle cx=16 cy=16 r=6 fill=red /></svg>',
-        2: '<svg class=dice-face width=32 height=32><circle cx=8 cy=8 r=3 /><circle cx=24 cy=24 r=3 /></svg>',
-        3: '<svg class=dice-face width=32 height=32><circle cx=8 cy=8 r=3 /><circle cx=16 cy=16 r=3 /><circle cx=24 cy=24 r=3 /></svg>',
-        4: '<svg class=dice-face width=32 height=32><circle cx=8 cy=8 r=3 /><circle cx=24 cy=24 r=3 /><circle cx=8 cy=24 r=3 /><circle cx=24 cy=8 r=3 /></svg>',
-        5: '<svg class=dice-face width=32 height=32><circle cx=16 cy=16 r=3 /><circle cx=8 cy=8 r=3 /><circle cx=24 cy=24 r=3 /><circle cx=8 cy=24 r=3 /><circle cx=24 cy=8 r=3 /></svg>',
-        6: '<svg class=dice-face width=32 height=32><circle cx=8 cy=16 r=3 /><circle cx=24 cy=16 r=3 /><circle cx=8 cy=8 r=3 /><circle cx=24 cy=24 r=3 /><circle cx=8 cy=24 r=3 /><circle cx=24 cy=8 r=3 /></svg>'
-    };
-
-    for (var i = 1; i <= 6; ++i) {
-        dice.append(eyes[i]);
+    if (window && window.$) {
+        window.$.dice3d = dice3d;
     }
-
-    setTimeout(function () {
-        outer.fadeOut(function () {
-            this.remove();
-            audio.remove();
-            if (callback) {
-                callback();
-            }
-        });
-    }, 3 * 1000);
 };
 
-$(function () {
-    $('<div>').attr('id', 'dice-table').appendTo(document.body);
-});
+var dice3d = function(faces, n, callback) {
+    if (faces == 6) {
+        var a = document.getElementsByTagName('audio');
+        var volume = (a.length > 0) ? a[0].volume : 1;
+
+        var audio = document.createElement('audio');
+        audio.id = 'dice3d-sound';
+        audio.src = 'sound/nc93322.mp3';
+        setTimeout(function() {
+            audio.volume = volume;
+            audio.play();
+        }, Math.random() * 500);
+
+        var angle = {
+            1: [90, 0],
+            2: [0, 90],
+            3: [180, 0],
+            4: [0, 0],
+            5: [0, -90],
+            6: [-90, 0],
+        }[n];
+        var outer = document.createElement('div');
+        outer.className = 'dice3d-outer';
+        table.appendChild(outer);
+
+        var dice = document.createElement('div');
+        dice.className = 'dice3d';
+        dice.style.transform = `rotateX(${angle[0]}deg) rotateZ(${angle[1]}deg)`;
+        outer.appendChild(dice);
+
+        var getFace = function(pips) {
+            const XMLNS = "http://www.w3.org/2000/svg";
+            var svg = document.createElementNS(XMLNS, 'svg');
+            svg.setAttribute('class', 'dice3d-face');
+            svg.setAttribute('width', 32);
+            svg.setAttribute('height', 32);
+
+            pips.map(function(pip) {
+                var circle = document.createElementNS(XMLNS, 'circle');
+                Object.keys(pip).forEach(key => circle.setAttribute(key, pip[key]));
+                return circle;
+            }).forEach(circle => svg.appendChild(circle));
+
+            return svg;
+        };
+
+        [
+            [{ cx: 16, cy: 16, r: 6, fill: 'red' }],
+            [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }],
+            [{ cx: 8, cy: 8, r: 3 }, { cx: 16, cy: 16, r: 3 }, { cx: 24, cy: 24, r: 3 }],
+            [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
+            [{ cx: 8, cy: 8, r: 3 }, { cx: 16, cy: 16, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
+            [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 16, r: 3 }, { cx: 24, cy: 16, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
+        ].map(getFace).forEach(face => dice.appendChild(face));
+
+
+        setTimeout(function () {
+            outer.addEventListener('transitionend', function(e) {
+                table.removeChild(this);
+                if (callback) {
+                    callback();
+                }
+            });
+            outer.style.opacity = 0;;
+        }, 3 * 1000);
+    } else {
+        console.error('Unsupported number of faces: ' + faces);
+    }
+};
+
+init();
+
+if (module) {
+    module.exports = dice3d;
+}
