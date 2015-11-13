@@ -1,8 +1,8 @@
 {
   "name": "dice3d",
   "version": "0.1.0",
-  "description": "Simple animation of dice",
-  "main": "index.js",
+  "description": "Simple 3D dice roll animator by CSS3 Animation.",
+  "main": "dist/dice3d.js",
   "dependencies": {
     "jest-cli": "^0.7.1",
     "gulp": "^3.9.0",
