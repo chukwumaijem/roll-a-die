@@ -1,47 +1,67 @@
-# cssdice [![Build Status](https://travis-ci.org/ukatama/dice3d.svg)](https://travis-ci.org/ukatama/dice3d)
+# dice3d [![Build Status](https://travis-ci.org/ukatama/dice3d.svg)](https://travis-ci.org/ukatama/dice3d)
 
-CSS3を利用したWebサイト用のダイスロールアニメーションです。
-ほとんどのアニメーションにJavaScriptが介在しないので、比較的軽量に動作すると思われます。
+Simple 3D dice roll animator by CSS3 Animation.
 
-現状は6面ダイスみの対応です。
+## With bower
+install
+```
+$ bower install dice3d
+```
 
-Mozilla Firefox 36.0a1, Google Chrome 39.0で動作を確認しています。
-IEでは動きません。
+Load styles in `<head></head>`
+```
+<link rel="stylesheet" href="bower_components/dice3d/dice3d.css">
+```
 
-## 動作に必要なファイル
-* css/dice.css
-* css/anim.css
-* js/dice.css
-* sound/nc93322.mp3
-    * ニコニ・コモンズより
-    * http://commons.nicovideo.jp/material/nc93322
-* jQuery最新版
+Load script at end of `<body></body>`.
+```
+<script type="text/javascript" src="bower_components/dice3d/dice3d.js"></script>
+```
 
-## 使い方
-dice.htmlを参照
+You can animate dice rolling by globaly defined function `dice3d()`.
+```
+dice3d(6, 1, callback);
+```
 
-## 補足
-body内にaudioタグが存在すると、その最初のものと同じ音量で効果音が再生されます。
+## With npm (and CommonJS builder)
+Install with npm.
+```
+$ npm install --save dice3d
+```
 
-# cssdice / English
-A simple dice roll animation for website.
+Load styles in `<head></head>`.
+```
+<link rel="stylesheet" href="bower_components/dice3d/dice3d.css">
+```
 
-Only works on...
+You can animate dice rolling.
+```
+var dice3d = require('dice3d');
 
-* Mozilla Firefox
-* Google Chrome
+dice3d(6, 2, callback);
+```
 
-## Required files
-* css/dice.css
-* css/anim.css
-* js/dice.css
-* sound/nc93322.mp3
-    * http://commons.nicovideo.jp/material/nc93322
+## Docs
+```
+function dice3d(faces, pips, callback);
+```
 
-and latest version of jQuery
+* `faces`: Number of faces. `6` only.
+* `pips`: Number of pips on the dice top.
+* `callback`: Called when animation is finished.
 
-## How to use
-See "dice.html"
+## Thanks
+* `[サイコロ] 1D6 [SE]` (Sound Effect)
+   * http://commons.nicovideo.jp/material/nc93322
+
+## License
+MIT License
+
+## Bug, Issue, Pull Request
+[Open issue](https://github.com/ukatama/dice3d/issues) in English or Japanese.
+
+## Example
+`dice.html`
 
 ![Press a button](https://raw.github.com/ukatama/cssdice/master/img/ss01.png)
 ![Dice rolling](https://raw.github.com/ukatama/cssdice/master/img/ss02.png)
