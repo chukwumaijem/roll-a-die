@@ -13,6 +13,11 @@ Load styles in `<head></head>`
 <link rel="stylesheet" href="bower_components/dice3d/dice3d.css">
 ```
 
+Load sound at top of `<body></body>`.
+```
+<audio src="bower_components/dice3d/nc93322.mp3"></audio>
+```
+
 Load script at end of `<body></body>`.
 ```
 <script type="text/javascript" src="bower_components/dice3d/dice3d.js"></script>
@@ -29,9 +34,16 @@ Install with npm.
 $ npm install --save dice3d
 ```
 
+Copy `dice3d.css` and `nc93322.mp3` in to your public directory.
+
 Load styles in `<head></head>`.
 ```
-<link rel="stylesheet" href="bower_components/dice3d/dice3d.css">
+<link rel="stylesheet" href="path/to/dice3d.css">
+```
+
+Load sound at top of `<body></body>`.
+```
+<audio src="path/to/nc93322.mp3"></audio>
 ```
 
 You can animate dice rolling.

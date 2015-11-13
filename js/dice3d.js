@@ -12,14 +12,12 @@ var init = function() {
 
 var dice3d = function(faces, n, callback) {
     if (faces == 6) {
-        var a = document.getElementsByTagName('audio');
-        var volume = (a.length > 0) ? a[0].volume : 1;
+        var sound = document.getElementById('dice3d-sound');
 
         var audio = document.createElement('audio');
-        audio.id = 'dice3d-sound';
-        audio.src = 'sound/nc93322.mp3';
+        audio.src = sound.src;
+        audio.volume = sound.volume;
         setTimeout(function() {
-            audio.volume = volume;
             audio.play();
         }, Math.random() * 500);
 
