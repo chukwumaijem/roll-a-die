@@ -10,7 +10,7 @@
     <input type="number" value=2>
     <button>roll</button>
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="js/dice.js"></script>
+    <script src="dist/dice3d.js"></script>
     <script>
         $(function () {
             var n = 0;
@@ -21,7 +21,7 @@
                 for (var i = 0; i < n; ++i) {
                     var r = Math.floor(Math.random() * 6) + 1;
                     log.push(r);
-                    dice6(r);
+                    $.dice3d(6, r); // Animate 6 faces dice
                 }
                 console.log(log);
             });
