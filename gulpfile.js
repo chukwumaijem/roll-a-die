@@ -6,7 +6,9 @@ let browserify = require('browserify');
 let buffer = require('vinyl-buffer');
 let gutil = require('gulp-util');
 let jest = require('jest-cli');
+let less = require('gulp-less');
 let notify = require('gulp-notify');
+let plumber = require('gulp-plumber');
 let source = require('vinyl-source-stream');
 let watchify = require('watchify');
 let webserver = require('gulp-webserver');
@@ -33,7 +35,7 @@ gulp.task('default', ['test', 'dist']);
 var _bundle = function(b) {
     return b.bundle()
         .on('error', function(e) {
-            notify.onError.call(this, '[Browserify] <%= error.message =>');
+            notify.onError.call(this, '[Browserify] <%= error.message %>');
             gutil.log('Browserify Error', e);
         })
         .pipe(source('dice3d.js'))
@@ -50,7 +52,17 @@ gulp.task('dist:script', function() {
     return _bundle(b);
 });
 
-gulp.task('dist', ['dist:script']);
+gulp.task('dist:style', function() {
+    return gulp.src('./less/dice3d.less')
+        .pipe(plumber({
+            errorHandler: notify.onError('[LESS] <%= error.message %>'),
+        }))
+        .pipe(less())
+        .pipe(gulp.dest('dist'))
+        .pipe(notify('[LESS] Generated <%= file.relative %>'));
+});
+
+gulp.task('dist', ['dist:script', 'dist:style']);
 
 /**
  * Test using Jest
@@ -121,8 +133,12 @@ b.on('update', bundle);
 b.on('log', gutil.log);
 gulp.task('watch:script', bundle);
 
+gulp.task('watch:style', function() {
+    return gulp.watch(['less/**/*'], ['dist:style']);
+});
+
 gulp.task('watch:test', function() {
     return gulp.watch(['__mocks__/**/*', '__tests__/**/*', 'js/**/*'], ['test']);
 });
 
-gulp.task('watch', ['watch:script', 'watch:test']);
+gulp.task('watch', ['watch:script', 'watch:style', 'watch:test']);
