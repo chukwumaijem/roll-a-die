@@ -1,4 +1,4 @@
-# cssdice
+# cssdice [![Build Status](https://travis-ci.org/ukatama/dice3d.svg)](https://travis-ci.org/ukatama/dice3d)
 
 CSS3を利用したWebサイト用のダイスロールアニメーションです。
 ほとんどのアニメーションにJavaScriptが介在しないので、比較的軽量に動作すると思われます。
