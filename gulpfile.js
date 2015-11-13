@@ -125,4 +125,4 @@ gulp.task('watch:test', function() {
     return gulp.watch(['__mocks__/**/*', '__tests__/**/*', 'js/**/*'], ['test']);
 });
 
-gulp.task('watch', ['watch:script']);
+gulp.task('watch', ['watch:script', 'watch:test']);
