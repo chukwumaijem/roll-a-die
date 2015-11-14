@@ -80,6 +80,4 @@ var dice3d = function(faces, n, callback) {
 
 init();
 
-if (module) {
-    module.exports = dice3d;
-}
+module.exports = dice3d;
