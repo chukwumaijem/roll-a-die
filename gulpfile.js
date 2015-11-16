@@ -21,6 +21,7 @@ const CONFIG = {
         entries: 'js/dice3d.js',
         debug: true,
         transform: 'babelify',
+        standalone: 'dice3d',
     },
 };
 
