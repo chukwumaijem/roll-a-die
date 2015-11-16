@@ -1,16 +1,19 @@
-var table;
+'use strict';
 
-var init = function() {
+var table;
+var initialized = false;
+
+var initialize = function() {
     table = document.createElement('div');
     table.id = 'dice3d-table';
     document.body.appendChild(table);
 
-    if (window && window.$) {
-        window.$.dice3d = dice3d;
-    }
+    initialized = true;
 };
 
 var dice3d = function(faces, n, callback) {
+    if (!initialized) initialize();
+
     if (faces == 6) {
         var sound = document.getElementById('dice3d-sound');
 
@@ -77,7 +80,5 @@ var dice3d = function(faces, n, callback) {
         console.error('Unsupported number of faces: ' + faces);
     }
 };
-
-init();
 
 module.exports = dice3d;
