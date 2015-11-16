@@ -18,9 +18,9 @@ Load styles in `<head></head>`
 <link rel="stylesheet" href="bower_components/dice3d/dice3d.css">
 ```
 
-Load sound at top of `<body></body>`.
+Load sound at top of `<body></body>` and set id to `dice3d-sound`.
 ```
-<audio src="bower_components/dice3d/nc93322.mp3"></audio>
+<audio id="dice3d-sound" src="bower_components/dice3d/nc93322.mp3"></audio>
 ```
 
 Load script at end of `<body></body>`.
@@ -46,9 +46,10 @@ Load styles in `<head></head>`.
 <link rel="stylesheet" href="path/to/dice3d.css">
 ```
 
-Load sound at top of `<body></body>`.
+
+Load sound at top of `<body></body>` and set id to `dice3d-sound`.
 ```
-<audio src="path/to/nc93322.mp3"></audio>
+<audio id="dice3d-sound" src="bower_components/dice3d/nc93322.mp3"></audio>
 ```
 
 You can animate dice rolling.
