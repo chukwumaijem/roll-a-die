@@ -4,3 +4,10 @@ node_js:
     - 4.2
 script:
     - node --harmony node_modules/jest-cli/bin/jest.js --runInBand --verbose
+deploy:
+    provider: npm
+    email: ${NPM_EMAIL}
+    api_key: ${NPM_APIKEY}
+    skip_cleanup: true
+    on:
+        branch: feature-auto-publishing
