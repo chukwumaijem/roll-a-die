@@ -10,4 +10,5 @@ deploy:
     api_key: ${NPM_APIKEY}
     skip_cleanup: true
     on:
-        branch: feature-auto-publishing
+        branch: master
+        tags: true
