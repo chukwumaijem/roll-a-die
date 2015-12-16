@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-    - 5.0
+    - 5.2
     - 4.2
 script:
     - node --harmony node_modules/jest-cli/bin/jest.js --runInBand --verbose
