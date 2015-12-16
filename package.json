@@ -1,6 +1,6 @@
 {
   "name": "dice3d",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "Simple 3D dice roll animator by CSS3 Animation.",
   "main": "dist/dice3d.js",
   "dependencies": {},
