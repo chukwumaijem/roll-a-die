@@ -3,8 +3,7 @@
   "version": "0.1.5",
   "description": "Simple 3D dice roll animator by CSS3 Animation.",
   "main": "dist/dice3d.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
@@ -14,7 +13,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
-    "jest-cli": "^0.7.1",
+    "jest-cli": "^0.8.2",
     "less-prefixer": "^1.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
