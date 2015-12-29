@@ -15,17 +15,17 @@ $ bower install dice3d
 
 Load styles in `<head></head>`
 ```
-<link rel="stylesheet" href="bower_components/dice3d/dice3d.css">
+<link rel="stylesheet" href="bower_components/dice3d/dist/dice3d.css">
 ```
 
 Load sound at top of `<body></body>` and set id to `dice3d-sound`.
 ```
-<audio id="dice3d-sound" src="bower_components/dice3d/nc93322.mp3"></audio>
+<audio id="dice3d-sound" src="bower_components/dice3d/dist/nc93322.mp3"></audio>
 ```
 
 Load script at end of `<body></body>`.
 ```
-<script type="text/javascript" src="bower_components/dice3d/dice3d.js"></script>
+<script type="text/javascript" src="bower_components/dice3d/dist/dice3d.js"></script>
 ```
 
 You can animate dice rolling by globaly defined function `dice3d()`.
