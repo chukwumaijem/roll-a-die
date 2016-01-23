@@ -1,6 +1,16 @@
 # Changelog
 
-## 1.0.1
+## 1.0.2 (2016/1/23)
+
+Bugfixes:
+
+    - fix SE on iOS ([#22](https://github.com/ukatama/dice3d/issues/22))
+
+Dependencies
+
+    - browserify@13.0.0
+
+## 1.0.1 (2016/1/23)
 
 Bugfixes:
 
