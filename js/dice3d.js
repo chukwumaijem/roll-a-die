@@ -11,18 +11,25 @@ var initialize = function() {
     initialized = true;
 };
 
+var played = false;
+
 var dice3d = function(faces, n, callback) {
     if (!initialized) initialize();
 
     if (faces == 6) {
         var sound = document.getElementById('dice3d-sound');
 
-        var audio = document.createElement('audio');
-        audio.src = sound.src;
-        audio.volume = sound.volume;
-        setTimeout(function() {
-            audio.play();
-        }, Math.random() * 500);
+        if (!played || sound.ended) {
+            played = true;
+            sound.play();
+        } else {
+            var audio = document.createElement('audio');
+            audio.src = sound.src;
+            audio.volume = sound.volume;
+            setTimeout(function() {
+                audio.play();
+            }, Math.random() * 500);
+        }
 
         var angle = {
             1: [90, 0],
