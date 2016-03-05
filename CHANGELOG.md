@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Start following [Keep a CHANGELOG](http://keepachangelog.com/).
 
+### Dependencies
+- Update jest-cli to 0.9.0
+
 ## [1.0.2] 0 2016/1/23
 ### Fixed
 - Fix SE on iOS ([#22](https://github.com/ukatama/dice3d/issues/22)).
