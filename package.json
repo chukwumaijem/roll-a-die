@@ -15,7 +15,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
-    "jest-cli": "^13.0.0",
+    "jest-cli": "^14.1.0",
     "less-prefixer": "^1.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
