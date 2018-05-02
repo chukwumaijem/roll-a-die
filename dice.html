@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="dist/dice3d.css">
-</head>
-<body>
-    <audio id="dice3d-sound" src="dist/nc93322.mp3"></audio>
-    <input id="number" type="number" value=2>
-    <button id="button-roll">roll</button>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="dist/dice3d.js"></script>
-    <script>
-var button = document.getElementById('button-roll');
-var input = document.getElementById('button-roll');
 
-button.addEventListener('click', function(e) {
-    e.preventDefault();
-    var n = +document.getElementById('number').value;
-    var log = [];
-    for (var i = 0; i < n; ++i) {
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="dist/dice3d.css">
+  <style>
+    #dice3d-table {
+      position: absolute;
+      top: 500px;
+      left: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="dice3d-sound" src="dist/nc93322.mp3"></audio>
+  <input id="number" type="number" value=2>
+  <button id="button-roll">roll</button>
+  <div id="dice3d-table"></div>
+  <script src="dist/dice3d.js"></script>
+
+  <script>
+    var button = document.getElementById('button-roll');
+    var input = document.getElementById('button-roll');
+    const element = document.getElementById('dice3d-table');
+
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      var n = +document.getElementById('number').value;
+      var log = [];
+      const options = {
+        element,
+        faces: 6,
+        n,
+      }
+      for (var i = 0; i < n; ++i) {
         var r = Math.floor(Math.random() * 6) + 1;
         log.push(r);
-        dice3d(6, r); // Animate 6 faces dice
-    }
-    console.log(log);
-});
-    </script>
+        dice3d(options); // Animate 6 faces dice
+      }
+      console.log(log);
+    });
+  </script>
 </body>
+
 </html>
