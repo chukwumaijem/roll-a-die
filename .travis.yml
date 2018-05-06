@@ -1,9 +1,8 @@
 language: node_js
 node_js:
-    - 5
-    - 4
+    - 6
 script:
-    - node --harmony node_modules/jest-cli/bin/jest.js --runInBand --verbose
+    - node node_modules/jest-cli/bin/jest.js --runInBand --verbose
 deploy:
     provider: npm
     email: ${NPM_EMAIL}
