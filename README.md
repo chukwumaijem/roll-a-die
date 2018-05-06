@@ -1,9 +1,9 @@
-# dice3d
-[![npm package](https://img.shields.io/npm/v/dice3d.svg?style=flat-square)](https://www.npmjs.org/package/dice3d)
-[![Build Status](https://img.shields.io/travis/ukatama/dice3d/master.svg?style=flat-square)](https://travis-ci.org/ukatama/dice3d)
-[![PeerDependencies](https://img.shields.io/david/peer/ukatama/dice3d.svg?style=flat-square)](https://david-dm.org/ukatama/dice3d#info=peerDependencies&view=list)
-[![Dependencies](https://img.shields.io/david/ukatama/dice3d.svg?style=flat-square)](https://david-dm.org/ukatama/dice3d)
-[![DevDependencies](https://img.shields.io/david/dev/ukatama/dice3d.svg?style=flat-square)](https://david-dm.org/ukatama/dice3d#info=devDependencies&view=list)
+# Roll A Die
+[![npm package](https://img.shields.io/npm/v/roll-a-die.svg?style=flat-square)](https://www.npmjs.org/package/roll-a-die)
+
+[![Build Status]
+(https://img.shields.io/travis/chukwumaijem/roll-a-die.svg?style=flat-square)](https://travis-ci.org/chukwumaijem/roll-a-die)
+
 
 Simple 3D dice roll animator by CSS3 Animation.
 
