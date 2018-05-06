@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ukatama/dice3d.git"
+    "url": "git@github.com:chukwumaijem/roll-a-die.git"
   },
   "keywords": [
     "dice",
@@ -37,7 +37,7 @@
   "author": "ukatama",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ukatama/dice3d/issues"
+    "url": "https://github.com/chukwumaijem/roll-a-die/issues"
   },
-  "homepage": "https://github.com/ukatama/dice3d"
+  "homepage": "https://github.com/chukwumaijem/roll-a-die"
 }
