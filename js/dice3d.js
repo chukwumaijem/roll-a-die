@@ -17,11 +17,14 @@ var initialize = function (element) {
 var played = false;
 
 var dice3d = function (options) {
-  const { faces, n, callback, element } = options
+  const faces = 6;
+  const { n, callback, element } = options;
   if (!initialized) initialize(element);
-
-  if (faces == 6) {
+  const result = [];
+  for (let i = 0; i < n; i++) {
     var sound = document.getElementById('dice3d-sound');
+    const face = Math.floor(Math.random() * 6) + 1;
+    result.push(face);
 
     if (!played || sound.ended) {
       played = true;
@@ -42,9 +45,10 @@ var dice3d = function (options) {
       4: [0, 0],
       5: [0, -90],
       6: [-90, 0],
-    }[n];
+    }[face];
     var outer = document.createElement('div');
     outer.className = 'dice3d-outer';
+    outer.id = `${i}-${face}`;
     table.appendChild(outer);
 
     var dice = document.createElement('div');
@@ -76,19 +80,14 @@ var dice3d = function (options) {
       [{ cx: 8, cy: 8, r: 3 }, { cx: 16, cy: 16, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
       [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 16, r: 3 }, { cx: 24, cy: 16, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
     ].map(getFace).forEach(face => dice.appendChild(face));
-
-
     setTimeout(function () {
-      outer.addEventListener('transitionend', function (e) {
-        table.removeChild(this);
-        if (callback) {
-          callback();
-        }
-      });
-      outer.style.opacity = 0;;
+      // outer.style.opacity = 0;;
+      const removeElement = document.getElementById(`${i}-${face}`);
+      removeElement.remove();
     }, 3 * 1000);
-  } else {
-    console.error('Unsupported number of faces: ' + faces);
+  }
+  if (callback) {
+    callback(result);
   }
 };
 
