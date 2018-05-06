@@ -1,10 +1,13 @@
-language: node_js
-node_js:
-    - 6
-script:
-    - node node_modules/jest-cli/bin/jest.js --runInBand --verbose
-deploy:
-    provider: npm
-    email: ${NPM_EMAIL}
-    api_key: ${NPM_APIKEY}
-    skip_cleanup: true
+branches:
+  only:
+  - master
+    language: node_js
+    node_js:
+        - 6
+    script:
+        - node node_modules/jest-cli/bin/jest.js --runInBand --verbose
+    deploy:
+        provider: npm
+        email: ${NPM_EMAIL}
+        api_key: ${NPM_APIKEY}
+        skip_cleanup: true
