@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../dist/dice3d.css">
+  <style>
+    #dice3d-table {
+      position: absolute;
+      top: 500px;
+      left: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <audio id="dice3d-sound" src="../dist/nc93322.mp3"></audio>
+  <input id="number" type="number" value=2>
+  <button id="button-roll" onclick="rollDice()">roll</button>
+  <div id="dice3d-table"></div>
+  <script src="../dist/dice3d.js"></script>
+
+  <script>
+    function response(res) {
+      // returns an array of the values from the dice
+      console.log(res)
+    }
+    function rollDice() {
+      const element = document.getElementById('dice3d-table');
+      var n = +document.getElementById('number').value;
+      const options = {
+        element, // element to display the animated dice in.
+        n, // number of dice to use 
+        callback: response
+      }
+      dice3d(options);
+    }
+  </script>
+</body>
+
+</html>
