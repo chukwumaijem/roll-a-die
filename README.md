@@ -20,12 +20,6 @@ Load styles in `<head></head>`.
 <link rel="stylesheet" href="path/to/roll-a-die.css">
 ```
 
-
-Load sound at top of `<body></body>` and set id to `roll-a-die-sound`.
-```
-<audio id="dice3d-sound" src="path/to/nc93322.mp3"></audio>
-```
-
 You can animate dice rolling.
 ```
 const rollDice = require('roll-a-die');

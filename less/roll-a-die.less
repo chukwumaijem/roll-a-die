@@ -1,0 +1,67 @@
+@import "../node_modules/less-prefixer/prefixer.less";
+
+
+.dice-outer {
+    display: inline-block;
+    position: relative;
+    width: 0;
+    height: 0;
+    perspective: 1000px;
+    margin-right: 64px;
+    margin-bottom: 32px;
+
+    .box-sizing(border-box);
+
+    .transition(opacity 1s ease-in-out);
+
+    .transform(rotateX(-15deg));
+    .transform-style(preserve-3d);
+
+    .animation(dice-movement 3s linear both);
+
+    .dice {
+        display: inline-block;
+        position: absolute;
+
+        width: 32px;
+        height: 32px;
+
+        .transform-style(preserve-3d);
+        .transform-origin(center center);
+
+        .dice-face {
+            position: absolute;
+            background: white;
+
+            width: 32px;
+            height: 32px;
+            border: 2px solid #aaa;
+            box-sizing: border-box;
+
+            .transform-origin(center center);
+            backface-visibility: hidden;
+
+            &:nth-child(1) {
+                .transform(translateZ(16px));
+            }
+            &:nth-child(2) {
+                .transform(rotateY(-90deg) translateZ(16px));
+            }
+            &:nth-child(3) {
+                .transform(rotateX(-90deg) translateZ(16px));
+            }
+            &:nth-child(4) {
+                .transform(rotateX(90deg) translateZ(16px));
+            }
+            &:nth-child(5) {
+                .transform(rotateY(90deg) translateZ(16px));
+            }
+            &:nth-child(6) {
+                .transform(rotateY(180deg) translateZ(16px));
+            }
+        }
+    }
+}
+
+
+@import "./keyframes.less";
