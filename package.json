@@ -1,8 +1,8 @@
 {
-  "name": "dice3d",
+  "name": "roll-a-die",
   "version": "1.0.0",
-  "description": "Simple 3D dice roll animator by CSS3 Animation.",
-  "main": "dist/dice3d.js",
+  "description": "Simple 3D dice roll using CSS3 animation.",
+  "main": "dist/roll-a-die.js",
   "dependencies": {},
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
@@ -35,7 +35,7 @@
     "CSS3D",
     "animation"
   ],
-  "author": "ukatama",
+  "author": "Chukwuma Ezumezu",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chukwumaijem/roll-a-die/issues"
