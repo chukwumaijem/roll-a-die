@@ -6,28 +6,39 @@
   <title></title>
   <link rel="stylesheet" href="../dist/roll-a-die.css">
   <style>
-    #dice-table {
-      position: absolute;
-      top: 500px;
-      left: 500px;
+    .block {
+      display: flex;
+      position: relative;
+      justify-content: center;
+    }
+
+    .box {
+      width: 300px;
+      border: 1px solid black;
+      text-align: center;
+      height: 300px;
     }
   </style>
 </head>
 
-<body>
+<body class="block">
   <audio id="dice-sound" src="../dist/nc93322.mp3"></audio>
-  <input id="number" type="number" value=2>
-  <button id="button-roll" onclick="rollDice()">roll</button>
-  <div id="dice-table"></div>
-  <script src="../dist/roll-a-die.js"></script>
 
+  <div class="box" id="dice-box">
+    <div>
+      <input id="number" type="number" value=2>
+      <button onclick="rollDice()">roll</button>
+    </div>
+  </div>
+
+  <script src="../dist/roll-a-die.js"></script>
   <script>
     function response(res) {
       // returns an array of the values from the dice
       console.log(res)
     }
     function rollDice() {
-      const element = document.getElementById('dice3d-table');
+      const element = document.getElementById('dice-box');
       var n = +document.getElementById('number').value;
       const options = {
         element, // element to display the animated dice in.

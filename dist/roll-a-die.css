@@ -1,10 +1,4 @@
-#dice-table {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 0;
-}
-#dice-table .dice-outer {
+.dice-outer {
   display: inline-block;
   position: relative;
   width: 0;
@@ -36,7 +30,7 @@
   -o-animation: dice-movement 3s linear both;
   animation: dice-movement 3s linear both;
 }
-#dice-table .dice-outer .dice {
+.dice-outer .dice {
   display: inline-block;
   position: absolute;
   width: 32px;
@@ -52,7 +46,7 @@
   -o-transform-origin: center center;
   transform-origin: center center;
 }
-#dice-table .dice-outer .dice .dice-face {
+.dice-outer .dice .dice-face {
   position: absolute;
   background: white;
   width: 32px;
@@ -66,42 +60,42 @@
   transform-origin: center center;
   backface-visibility: hidden;
 }
-#dice-table .dice-outer .dice .dice-face:nth-child(1) {
+.dice-outer .dice .dice-face:nth-child(1) {
   -webkit-transform: translateZ(16px);
   -moz-transform: translateZ(16px);
   -ms-transform: translateZ(16px);
   -o-transform: translateZ(16px);
   transform: translateZ(16px);
 }
-#dice-table .dice-outer .dice .dice-face:nth-child(2) {
+.dice-outer .dice .dice-face:nth-child(2) {
   -webkit-transform: rotateY(-90deg) translateZ(16px);
   -moz-transform: rotateY(-90deg) translateZ(16px);
   -ms-transform: rotateY(-90deg) translateZ(16px);
   -o-transform: rotateY(-90deg) translateZ(16px);
   transform: rotateY(-90deg) translateZ(16px);
 }
-#dice-table .dice-outer .dice .dice-face:nth-child(3) {
+.dice-outer .dice .dice-face:nth-child(3) {
   -webkit-transform: rotateX(-90deg) translateZ(16px);
   -moz-transform: rotateX(-90deg) translateZ(16px);
   -ms-transform: rotateX(-90deg) translateZ(16px);
   -o-transform: rotateX(-90deg) translateZ(16px);
   transform: rotateX(-90deg) translateZ(16px);
 }
-#dice-table .dice-outer .dice .dice-face:nth-child(4) {
+.dice-outer .dice .dice-face:nth-child(4) {
   -webkit-transform: rotateX(90deg) translateZ(16px);
   -moz-transform: rotateX(90deg) translateZ(16px);
   -ms-transform: rotateX(90deg) translateZ(16px);
   -o-transform: rotateX(90deg) translateZ(16px);
   transform: rotateX(90deg) translateZ(16px);
 }
-#dice-table .dice-outer .dice .dice-face:nth-child(5) {
+.dice-outer .dice .dice-face:nth-child(5) {
   -webkit-transform: rotateY(90deg) translateZ(16px);
   -moz-transform: rotateY(90deg) translateZ(16px);
   -ms-transform: rotateY(90deg) translateZ(16px);
   -o-transform: rotateY(90deg) translateZ(16px);
   transform: rotateY(90deg) translateZ(16px);
 }
-#dice-table .dice-outer .dice .dice-face:nth-child(6) {
+.dice-outer .dice .dice-face:nth-child(6) {
   -webkit-transform: rotateY(180deg) translateZ(16px);
   -moz-transform: rotateY(180deg) translateZ(16px);
   -ms-transform: rotateY(180deg) translateZ(16px);
