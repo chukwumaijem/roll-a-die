@@ -6,7 +6,7 @@ var initialized = false;
 var initialize = function (element) {
   if (!element) {
     table = document.createElement('div');
-    table.id = 'dice3d-table';
+    table.id = 'dice-table';
     document.body.appendChild(table);
   } else {
     table = element;
@@ -16,13 +16,13 @@ var initialize = function (element) {
 
 var played = false;
 
-var dice3d = function (options) {
+var rollADie = function (options) {
   const faces = 6;
   const { n, callback, element } = options;
   if (!initialized) initialize(element);
   const result = [];
   for (let i = 0; i < n; i++) {
-    var sound = document.getElementById('dice3d-sound');
+    var sound = document.getElementById('dice-sound');
     const face = Math.floor(Math.random() * 6) + 1;
     result.push(face);
 
@@ -47,19 +47,19 @@ var dice3d = function (options) {
       6: [-90, 0],
     }[face];
     var outer = document.createElement('div');
-    outer.className = 'dice3d-outer';
+    outer.className = 'dice-outer';
     outer.id = `${i}-${face}`;
     table.appendChild(outer);
 
     var dice = document.createElement('div');
-    dice.className = 'dice3d';
+    dice.className = 'dice';
     dice.style.transform = `rotateX(${angle[0]}deg) rotateZ(${angle[1]}deg)`;
     outer.appendChild(dice);
 
     var getFace = function (pips) {
       const XMLNS = "http://www.w3.org/2000/svg";
       var svg = document.createElementNS(XMLNS, 'svg');
-      svg.setAttribute('class', 'dice3d-face');
+      svg.setAttribute('class', 'dice-face');
       svg.setAttribute('width', 32);
       svg.setAttribute('height', 32);
 
@@ -91,4 +91,4 @@ var dice3d = function (options) {
   }
 };
 
-module.exports = dice3d;
+module.exports = rollADie;

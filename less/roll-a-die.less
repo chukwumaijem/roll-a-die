@@ -1,12 +1,12 @@
 @import "../node_modules/less-prefixer/prefixer.less";
 
-#dice3d-table {
+#dice-table {
     position: fixed;
     top: 0;
     left: 0;
     height: 0;
 
-    .dice3d-outer {
+    .dice-outer {
         display: inline-block;
         position: relative;
         width: 0;
@@ -24,7 +24,7 @@
 
         .animation(dice-movement 3s linear both);
 
-        .dice3d {
+        .dice {
             display: inline-block;
             position: absolute;
 
@@ -34,7 +34,7 @@
             .transform-style(preserve-3d);
             .transform-origin(center center);
 
-            .dice3d-face {
+            .dice-face {
                 position: absolute;
                 background: white;
 

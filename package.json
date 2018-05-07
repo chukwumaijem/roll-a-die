@@ -23,7 +23,8 @@
   },
   "scripts": {
     "test": "node_modules/.bin/jest",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "build": "gulp dist"
   },
   "repository": {
     "type": "git",

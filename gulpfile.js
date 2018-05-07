@@ -18,10 +18,10 @@ let webserver = require('gulp-webserver');
  */
 const CONFIG = {
     browserify: {
-        entries: 'js/dice3d.js',
+        entries: 'js/roll-a-die.js',
         debug: true,
         transform: 'babelify',
-        standalone: 'dice3d',
+        standalone: 'roll-a-die',
     },
 };
 
@@ -39,7 +39,7 @@ var _bundle = function(b) {
             notify.onError.call(this, '[Browserify] <%= error.message %>');
             gutil.log('Browserify Error', e);
         })
-        .pipe(source('dice3d.js'))
+        .pipe(source('roll-a-die.js'))
         .pipe(buffer())
         .pipe(gulp.dest('dist'))
         .pipe(notify('[Browserify] Generated <%= file.relative %>'));
@@ -54,7 +54,7 @@ gulp.task('dist:script', function() {
 });
 
 gulp.task('dist:style', function() {
-    return gulp.src('./less/dice3d.less')
+    return gulp.src('./less/roll-a-die.less')
         .pipe(plumber({
             errorHandler: notify.onError('[LESS] <%= error.message %>'),
         }))

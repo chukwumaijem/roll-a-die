@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
-  <link rel="stylesheet" href="../dist/dice3d.css">
+  <link rel="stylesheet" href="../dist/roll-a-die.css">
   <style>
-    #dice3d-table {
+    #dice-table {
       position: absolute;
       top: 500px;
       left: 500px;
@@ -15,11 +15,11 @@
 </head>
 
 <body>
-  <audio id="dice3d-sound" src="../dist/nc93322.mp3"></audio>
+  <audio id="dice-sound" src="../dist/nc93322.mp3"></audio>
   <input id="number" type="number" value=2>
   <button id="button-roll" onclick="rollDice()">roll</button>
-  <div id="dice3d-table"></div>
-  <script src="../dist/dice3d.js"></script>
+  <div id="dice-table"></div>
+  <script src="../dist/roll-a-die.js"></script>
 
   <script>
     function response(res) {
@@ -34,7 +34,7 @@
         n, // number of dice to use 
         callback: response
       }
-      dice3d(options);
+      rollADie(options);
     }
   </script>
 </body>
