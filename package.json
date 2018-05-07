@@ -24,7 +24,8 @@
   "scripts": {
     "test": "node_modules/.bin/jest",
     "dev": "gulp watch",
-    "build": "gulp dist"
+    "build": "gulp dist",
+    "prepush": "npm run build"
   },
   "repository": {
     "type": "git",
