@@ -2,9 +2,9 @@
 
 function verifyParams(options) {
   const { numberDice, callback, element } = options;
-  if (!element) throw 'Element to render dice animation not specified!'
-  if (!numberDice) throw 'Number of dice to use not specified';
-  if (!callback) throw 'Provide a callback function to recieve dice values';
+  if (!element) throw new Error('Element to render dice animation not specified.');
+  if (!numberDice) throw new Error('Number of dice to use not specified.');
+  if (!callback) throw new Error('Provide a callback function to recieve dice values.');
 }
 
 function playSound(outerContainer) {
@@ -51,11 +51,13 @@ function removeDieFromDOM(dieId) {
 }
 
 const rollADie = function (options) {
-  const { numberDice, callback, element } = options;
+  const { numberDice, callback, element, noSound } = options;
   verifyParams(options);
   const faces = 6;
   const result = [];
-  playSound(element);
+  if (!noSound) {
+    playSound(element);
+  }
 
   for (let i = 0; i < numberDice; i++) {
     const dieFace = Math.floor(Math.random() * 6) + 1;

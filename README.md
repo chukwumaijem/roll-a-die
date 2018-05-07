@@ -5,36 +5,45 @@
 
 
 Simple 3D dice roll animator by CSS3 Animation.
+## With bower
+install
 
+$ bower install roll-a-die
+Load styles in <head></head>
+```
+<link rel="stylesheet" href="bower_components/roll-a-die/dist/roll-a-die.css">
+```
+Load script at end of <body></body>.
+```
+<script type="text/javascript" src="bower_components/roll-a-die/dist/roll-a-die.js"></script>
+```
+
+You can animate dice rolling by globaly defined function rollADie().
+
+rollDice({ element, numberDice: 2, callback});
 
 ## With npm (and CommonJS builder)
 Install with npm.
-```
-$ npm install --save roll-a-die
-```
+```npm install --save roll-a-die```
 
-Copy `dice3d.css` and `nc93322.mp3` in to your public directory.
+Copy `roll-a-die.css` into your public directory.
 
 Load styles in `<head></head>`.
-```
-<link rel="stylesheet" href="path/to/roll-a-die.css">
-```
+```<link rel="stylesheet" href="path/to/roll-a-die.css">```
 
 You can animate dice rolling.
 ```
 const rollDice = require('roll-a-die');
-
-rollDice(6, 2, callback);
+rollDice({ element, numberDice: 2, callback});
+rollDice({ element, numberDice: 2, callback, noSound: true});
 ```
 
-## Docs
-```
-function rollDice(faces, pips, callback);
-```
+## Definitions
 
-* `faces`: Number of faces. `6` only.
-* `pips`: Number of pips on the dice top. Pips can be generated with `Math.random()`
-* `callback`: Called when animation is finished.
+* `element`: The element to render die animation on.
+* `numberDice`: The number of dice to use.`
+* `callback`: Called when animation is finished. Returns an array of the values from throw.
+* `noSound`: Roll the die without sound.
 
 ## Thanks
 * (Sound Effect)
