@@ -1,26 +1,21 @@
 'use strict';
 
-function errorCheck(options) {
-  const { n, callback, element } = options;
+function verifyParams(options) {
+  const { numberDice, callback, element } = options;
   if (!element) throw 'Element to render dice animation not specified!'
-  if (!n) throw 'Number of dice to use not specified';
+  if (!numberDice) throw 'Number of dice to use not specified';
   if (!callback) throw 'Provide a callback function to recieve dice values';
 }
-function playSound() {
+
+function playSound(outerContainer) {
   let played;
-  const sound = document.getElementById('dice-sound');
-  if (!played || sound.ended) {
-    played = true;
-    sound.play();
-  } else {
-    const audio = document.createElement('audio');
-    audio.src = sound.src;
-    audio.volume = sound.volume;
-    setTimeout(function () {
-      audio.play();
-    }, Math.random() * 500);
-  }
+  const audio = document.createElement('audio');
+  outerContainer.appendChild(audio);
+  audio.src = '../dist/nc93322.mp3';
+  played = true;
+  audio.play();
 }
+
 function getFace(pips) {
   const XMLNS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(XMLNS, 'svg');
@@ -36,6 +31,7 @@ function getFace(pips) {
 
   return svg;
 };
+
 function appendDieContainers(dieId, element, angle) {
   const outer = document.createElement('div');
   outer.className = 'dice-outer';
@@ -49,13 +45,19 @@ function appendDieContainers(dieId, element, angle) {
   return dice;
 }
 
+function removeDieFromDOM(dieId) {
+  const removeElement = document.getElementById(dieId);
+  removeElement.remove();
+}
+
 const rollADie = function (options) {
-  const { n, callback, element } = options;
-  errorCheck(options);
+  const { numberDice, callback, element } = options;
+  verifyParams(options);
   const faces = 6;
   const result = [];
-  playSound();
-  for (let i = 0; i < n; i++) {
+  playSound(element);
+
+  for (let i = 0; i < numberDice; i++) {
     const dieFace = Math.floor(Math.random() * 6) + 1;
     result.push(dieFace);
     const angle = {
@@ -66,19 +68,18 @@ const rollADie = function (options) {
       5: [0, -90],
       6: [-90, 0],
     }[dieFace];
-    const dice = appendDieContainers(`${i}-${dieFace}`, element, angle);
+    const dieId = `${i}-${dieFace}`;
+    const dice = appendDieContainers(dieId, element, angle);
     [
       [{ cx: 16, cy: 16, r: 6, fill: 'red' }],
       [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }],
       [{ cx: 8, cy: 8, r: 3 }, { cx: 16, cy: 16, r: 3 }, { cx: 24, cy: 24, r: 3 }],
       [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
       [{ cx: 8, cy: 8, r: 3 }, { cx: 16, cy: 16, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
-      [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 16, r: 3 }, { cx: 24, cy: 16, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
+      [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 16, r: 3 }, { cx: 24, cy: 16, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }]
     ].map(getFace).forEach(face => dice.appendChild(face));
-    setTimeout(function () {
-      const removeElement = document.getElementById(`${i}-${dieFace}`);
-      removeElement.remove();
-    }, 3 * 1000);
+    //Todo: Remove existing dice elements before appending new ones. In cases where user calls rollDice in quick succesion
+    setTimeout(() => removeDieFromDOM(dieId), 3000);
   }
   if (callback) {
     callback(result);
