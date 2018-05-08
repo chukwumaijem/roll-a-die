@@ -1,5 +1,4 @@
 import '../less/roll-a-die.less';
-import dieSound from './nc93322.mp3';
 
 function verifyParams(options) {
   const { numberDice, callback, element } = options;
@@ -12,7 +11,7 @@ function playSound(outerContainer) {
   let played;
   const audio = document.createElement('audio');
   outerContainer.appendChild(audio);
-  audio.src = dieSound;
+  audio.src = require('./nc93322.mp3');
   played = true;
   audio.play();
 }

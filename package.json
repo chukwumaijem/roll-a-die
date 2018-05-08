@@ -11,6 +11,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
+    "identity-obj-proxy": "^3.0.0",
     "jest-cli": "^22.4.3",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
@@ -22,7 +23,7 @@
   },
   "scripts": {
     "test": "node_modules/.bin/jest",
-    "dev": "gulp watch",
+    "dev": "node_modules/.bin/webpack -p --watch",
     "build": "node_modules/.bin/webpack -p",
     "prepush": "npm run build"
   },
@@ -35,6 +36,12 @@
     "CSS3D",
     "animation"
   ],
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
   "author": "Chukwuma Ezumezu",
   "license": "MIT",
   "bugs": {
