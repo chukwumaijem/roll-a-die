@@ -29,7 +29,7 @@ rollADie({ element, numberDice: 2, callback});
 rollADie({ element, numberDice: 2, callback, noSound: true});
 ```
 
-## Definitions
+## Parameter Definitions
 
 * `element`: The element to render die animation on.
 * `numberDice`: The number of dice to use.`
