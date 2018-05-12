@@ -47,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/chukwumaijem/roll-a-die/issues"
   },
-  "homepage": "https://github.com/chukwumaijem/roll-a-die"
+  "homepage": "https://github.com/chukwumaijem/roll-a-die",
+  "files": [
+    "dist/roll-a-die.js"
+  ]
 }
