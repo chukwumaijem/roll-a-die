@@ -3,15 +3,15 @@
 
 Simple 3D dice roll animator by CSS3 Animation.
 
+[Demo](https://codepen.io/chukwuma-ezumezu/pen/qYKOGW)
 
 ## Vanilla JS
-[Demo](https://codepen.io/chukwuma-ezumezu/pen/qYKOGW)
 Copy dist/roll-a-die.js into your library folder
 Load it into your HTML script
 ```
 <script type="text/javascript" src="path/to/roll-a-die.js"></script>
 ```
-You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@1.0.4/dist/roll-a-die.js`. Remember to update the package number to the most recent.
+You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@1.0.5/dist/roll-a-die.js`. Remember to update the package number to the most recent.
 
 Call the method with its options.
 ```
@@ -20,18 +20,26 @@ rollADie({ element, numberDice: 2, callback});
 
 ## With npm (and CommonJS builder)
 Install with npm.
-```npm install --save roll-a-die```
+```
+npm install --save roll-a-die
+```
 
 Install with yarn.
-```yarn add roll-a-die```
+```
+yarn add roll-a-die
+```
 
 import the library
 
 ES5
-```const rollADie = require('roll-a-die');```
+```
+const rollADie = require('roll-a-die');
+```
 
 ES6
-```import rollADie from 'roll-a-die';```
+```
+import rollADie from 'roll-a-die';
+```
 
 Call the method
 ```
