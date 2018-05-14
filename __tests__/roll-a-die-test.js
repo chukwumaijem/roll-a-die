@@ -9,7 +9,7 @@ describe('Roll A Die', function () {
     });
 
     it('should animate 6 faces dice', function () {
-        const rollADie = require('../js/roll-a-die.js');
+        const rollADie = require('../js/roll-a-die');
         const cb = (r) => r;
 
         rollADie({ element, numberDice: 1, callback: cb, noSound: true });
@@ -21,12 +21,11 @@ describe('Roll A Die', function () {
     });
 
     it('should call callback', function () {
-        const rollADie = require('../js/roll-a-die.js');
+        const rollADie = require('../js/roll-a-die');
 
         const cb = (r) => result = r;
         let result;
         rollADie({ element, numberDice: 1, callback: cb, noSound: true });
-        // expect(cb).toBeCalled();
         expect(result).toHaveLength(1);
     });
 });

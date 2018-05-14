@@ -1,6 +1,6 @@
 {
   "name": "roll-a-die",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple 3D dice roll using CSS3 animation.",
   "main": "dist/roll-a-die.js",
   "dependencies": {},
@@ -24,8 +24,7 @@
   "scripts": {
     "test": "node_modules/.bin/jest",
     "dev": "node_modules/.bin/webpack -p --watch",
-    "build": "node_modules/.bin/webpack -p",
-    "prepush": "npm run build"
+    "build": "node_modules/.bin/webpack -p"
   },
   "repository": {
     "type": "git",

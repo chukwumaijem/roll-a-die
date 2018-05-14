@@ -3,9 +3,9 @@
 
 Simple 3D dice roll animator by CSS3 Animation.
 
-[Demo](https://codepen.io/chukwuma-ezumezu/pen/qYKOGW)
 
 ## Vanilla JS
+[Demo](https://codepen.io/chukwuma-ezumezu/pen/qYKOGW)
 Copy dist/roll-a-die.js into your library folder
 Load it into your HTML script
 ```
@@ -22,11 +22,22 @@ rollADie({ element, numberDice: 2, callback});
 Install with npm.
 ```npm install --save roll-a-die```
 
-Call method
+Install with yarn.
+```yarn add roll-a-die```
+
+import the library
+
+ES5
+```const rollADie = require('roll-a-die');```
+
+ES6
+```import rollADie from 'roll-a-die';```
+
+Call the method
 ```
-const rollADie = require('roll-a-die');
 rollADie({ element, numberDice: 2, callback});
 rollADie({ element, numberDice: 2, callback, noSound: true});
+rollADie({ element, numberDice: 2, callback, delay: 1000});
 ```
 
 ## Parameter Definitions
@@ -34,7 +45,8 @@ rollADie({ element, numberDice: 2, callback, noSound: true});
 * `element`: The element to render die animation on.
 * `numberDice`: The number of dice to use.`
 * `callback`: Called when animation is finished. Returns an array of the values from throw.
-* `noSound`: Roll the die without sound.
+* `noSound`: Roll the die without sound (Optional).
+* `delay`: Time in milliseconds to delay before removing animations (Optional).
 
 ## Thanks
 * (Sound Effect)

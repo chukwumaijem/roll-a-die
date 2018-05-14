@@ -1,10 +1,20 @@
 import '../less/roll-a-die.less';
-
+const dieInDOM = [];
 function verifyParams(options) {
-  const { numberDice, callback, element } = options;
+  const { numberDice, callback, element, delay } = options;
   if (!element) throw new Error('Element to render dice animation not specified.');
+  if (!element instanceof HTMLElement)
+    throw new Error('"element" must be a HTMLElement')
   if (!numberDice) throw new Error('Number of dice to use not specified.');
+  if (typeof numberDice !== 'number')
+    throw new Error('"numberDice" must be a number.');
+
   if (!callback) throw new Error('Provide a callback function to recieve dice values.');
+  if (typeof callback !== 'function')
+    throw new Error('"callback" must be a function')
+
+  if (delay && typeof delay !== 'number')
+    throw new Error('Time is seconds. "delay" must be a number.');
 }
 
 function playSound(outerContainer) {
@@ -47,11 +57,18 @@ function appendDieContainers(dieId, element, angle) {
 
 function removeDieFromDOM(dieId) {
   const removeElement = document.getElementById(dieId);
-  removeElement.remove();
+  if(removeElement) {
+    removeElement.remove();
+  }
 }
 
 const rollADie = function (options) {
   const { numberDice, callback, element, noSound } = options;
+  let delay = options.delay || 3000;
+  if(dieInDOM.length) {
+    dieInDOM.forEach(die => removeDieFromDOM(die));
+    dieInDOM.length = 0; //reset the array
+  }
   verifyParams(options);
   const faces = 6;
   const result = [];
@@ -70,7 +87,8 @@ const rollADie = function (options) {
       5: [0, -90],
       6: [-90, 0],
     }[dieFace];
-    const dieId = `${i}-${dieFace}`;
+    const dieId = `${Math.random() * 10}-${dieFace}`;
+    dieInDOM.push(dieId);
     const dice = appendDieContainers(dieId, element, angle);
     [
       [{ cx: 16, cy: 16, r: 6, fill: 'red' }],
@@ -80,11 +98,12 @@ const rollADie = function (options) {
       [{ cx: 8, cy: 8, r: 3 }, { cx: 16, cy: 16, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }],
       [{ cx: 8, cy: 8, r: 3 }, { cx: 24, cy: 24, r: 3 }, { cx: 8, cy: 16, r: 3 }, { cx: 24, cy: 16, r: 3 }, { cx: 8, cy: 24, r: 3 }, { cx: 24, cy: 8, r: 3 }]
     ].map(getFace).forEach(face => dice.appendChild(face));
-    //Todo: Remove existing dice elements before appending new ones. In cases where user calls rollDice in quick succesion
-    setTimeout(() => removeDieFromDOM(dieId), 3000);
-  }
-  if (callback) {
-    callback(result);
+
+    setTimeout(() => removeDieFromDOM(dieId), delay);
+
+    if(result.length === numberDice && callback) {
+      callback(result);
+    }
   }
 };
 
