@@ -37,10 +37,10 @@
     }
     function rollDice() {
       const element = document.getElementById('dice-box');
-      var numberDice = +document.getElementById('number').value;
+      var numberOfDice = +document.getElementById('number').value;
       const options = {
         element, // element to display the animated dice in.
-        numberDice, // number of dice to use 
+        numberOfDice, // number of dice to use 
         callback: response
       }
       rollADie(options);

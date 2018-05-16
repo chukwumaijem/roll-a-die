@@ -1,13 +1,13 @@
 import '../less/roll-a-die.less';
 const dieInDOM = [];
 function verifyParams(options) {
-  const { numberDice, callback, element, delay } = options;
+  const { numberOfDice, callback, element, delay } = options;
   if (!element) throw new Error('Element to render dice animation not specified.');
   if (!element instanceof HTMLElement)
     throw new Error('"element" must be a HTMLElement')
-  if (!numberDice) throw new Error('Number of dice to use not specified.');
-  if (typeof numberDice !== 'number')
-    throw new Error('"numberDice" must be a number.');
+  if (!numberOfDice) throw new Error('Number of dice to use not specified.');
+  if (typeof numberOfDice !== 'number')
+    throw new Error('"numberOfDice" must be a number.');
 
   if (!callback) throw new Error('Provide a callback function to recieve dice values.');
   if (typeof callback !== 'function')
@@ -63,7 +63,7 @@ function removeDieFromDOM(dieId) {
 }
 
 const rollADie = function (options) {
-  const { numberDice, callback, element, noSound } = options;
+  const { numberOfDice, callback, element, noSound } = options;
   let delay = options.delay || 3000;
   if(dieInDOM.length) {
     dieInDOM.forEach(die => removeDieFromDOM(die));
@@ -76,7 +76,7 @@ const rollADie = function (options) {
     playSound(element);
   }
 
-  for (let i = 0; i < numberDice; i++) {
+  for (let i = 0; i < numberOfDice; i++) {
     const dieFace = Math.floor(Math.random() * 6) + 1;
     result.push(dieFace);
     const angle = {
@@ -101,10 +101,10 @@ const rollADie = function (options) {
 
     setTimeout(() => removeDieFromDOM(dieId), delay);
 
-    if(result.length === numberDice && callback) {
+    if(result.length === numberOfDice && callback) {
       callback(result);
     }
   }
 };
 
-module.exports = rollADie;
+export default rollADie;

@@ -1,6 +1,8 @@
 'use strict';
 
 jest.dontMock('../js/roll-a-die.js');
+import rollADie from '../js/roll-a-die';
+
 const element = document.createElement('div');
 
 describe('Roll A Die', function () {
@@ -9,23 +11,19 @@ describe('Roll A Die', function () {
     });
 
     it('should animate 6 faces dice', function () {
-        const rollADie = require('../js/roll-a-die');
         const cb = (r) => r;
-
-        rollADie({ element, numberDice: 1, callback: cb, noSound: true });
-        rollADie({ element, numberDice: 2, callback: cb, noSound: true });
-        rollADie({ element, numberDice: 3, callback: cb, noSound: true });
-        rollADie({ element, numberDice: 4, callback: cb, noSound: true });
-        rollADie({ element, numberDice: 5, callback: cb, noSound: true });
-        rollADie({ element, numberDice: 6, callback: cb, noSound: true });
+        rollADie({ element, numberOfDice: 1, callback: cb, noSound: true });
+        rollADie({ element, numberOfDice: 2, callback: cb, noSound: true });
+        rollADie({ element, numberOfDice: 3, callback: cb, noSound: true });
+        rollADie({ element, numberOfDice: 4, callback: cb, noSound: true });
+        rollADie({ element, numberOfDice: 5, callback: cb, noSound: true });
+        rollADie({ element, numberOfDice: 6, callback: cb, noSound: true });
     });
 
     it('should call callback', function () {
-        const rollADie = require('../js/roll-a-die');
-
-        const cb = (r) => result = r;
         let result;
-        rollADie({ element, numberDice: 1, callback: cb, noSound: true });
+        const cb = (r) => result = r;
+        rollADie({ element, numberOfDice: 1, callback: cb, noSound: true });
         expect(result).toHaveLength(1);
     });
 });
