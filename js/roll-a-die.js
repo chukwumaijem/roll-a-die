@@ -107,4 +107,4 @@ const rollADie = function (options) {
   }
 };
 
-module.exports = rollADie;
+export default rollADie;

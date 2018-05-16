@@ -10,7 +10,9 @@ const config = {
     path: BUILD_DIR,
     filename: 'roll-a-die.js',
     publicPath: 'dist/',
-    library: 'rollADie'
+    library: 'rollADie',
+    libraryExport: 'default',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
