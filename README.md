@@ -11,11 +11,11 @@ Load it into your HTML script
 ```
 <script type="text/javascript" src="path/to/roll-a-die.js"></script>
 ```
-You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@1.0.5/dist/roll-a-die.js`. Remember to update the package number to the most recent.
+You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@1.1.0/dist/roll-a-die.js`. Remember to update the package number to the most recent.
 
 Call the method with its options.
 ```
-rollADie({ element, numberDice: 2, callback});
+rollADie({ element, numberOfDice: 2, callback});
 ```
 
 ## With npm (and CommonJS builder)
@@ -43,15 +43,15 @@ import rollADie from 'roll-a-die';
 
 Call the method
 ```
-rollADie({ element, numberDice: 2, callback});
-rollADie({ element, numberDice: 2, callback, noSound: true});
-rollADie({ element, numberDice: 2, callback, delay: 1000});
+rollADie({ element, numberOfDice: 2, callback});
+rollADie({ element, numberOfDice: 2, callback, noSound: true});
+rollADie({ element, numberOfDice: 2, callback, delay: 1000});
 ```
 
 ## Parameter Definitions
 
 * `element`: The element to render die animation on.
-* `numberDice`: The number of dice to use.`
+* `numberOfDice`: The number of dice to use.`
 * `callback`: Called when animation is finished. Returns an array of the values from throw.
 * `noSound`: Roll the die without sound (Optional).
 * `delay`: Time in milliseconds to delay before removing animations (Optional).

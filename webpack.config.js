@@ -12,7 +12,7 @@ const config = {
     publicPath: 'dist/',
     library: 'rollADie',
     libraryExport: 'default',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
