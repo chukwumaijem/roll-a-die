@@ -1,13 +1,16 @@
 import '../less/roll-a-die.less';
+
 const dieInDOM = [];
 function verifyParams(options) {
-  const { numberOfDice, callback, element, delay } = options;
+  const { numberOfDice, callback, element, delay, values } = options;
   if (!element) throw new Error('Element to render dice animation not specified.');
   if (!element instanceof HTMLElement)
     throw new Error('"element" must be a HTMLElement')
   if (!numberOfDice) throw new Error('Number of dice to use not specified.');
   if (typeof numberOfDice !== 'number')
     throw new Error('"numberOfDice" must be a number.');
+  if (!Number.isInteger(numberOfDice))
+    throw new Error('"numberOfDice" must be an integer.');
 
   if (!callback) throw new Error('Provide a callback function to recieve dice values.');
   if (typeof callback !== 'function')
@@ -15,6 +18,20 @@ function verifyParams(options) {
 
   if (delay && typeof delay !== 'number')
     throw new Error('Time is seconds. "delay" must be a number.');
+
+  if (values) {
+    if (!Array.isArray(values))
+      throw new Error('Values to generate. "values" must be an array of numbers.');
+    if (values.length !== numberOfDice)
+      throw new Error('The length of "values" must be equal to the numberOfDice.');
+    values.forEach(value => {
+      if (typeof value !== 'number')
+        throw new Error(`${value} in "values" must be a number.`);
+      if (!Number.isInteger(value))
+        throw new Error(`${value} in "values" must be an integer.`);
+    });
+  }
+
 }
 
 function playSound(outerContainer) {
@@ -57,15 +74,15 @@ function appendDieContainers(dieId, element, angle) {
 
 function removeDieFromDOM(dieId) {
   const removeElement = document.getElementById(dieId);
-  if(removeElement) {
+  if (removeElement) {
     removeElement.remove();
   }
 }
 
 const rollADie = function (options) {
-  const { numberOfDice, callback, element, noSound } = options;
+  const { numberOfDice, callback, element, noSound, values } = options;
   let delay = options.delay || 3000;
-  if(dieInDOM.length) {
+  if (dieInDOM.length) {
     dieInDOM.forEach(die => removeDieFromDOM(die));
     dieInDOM.length = 0; //reset the array
   }
@@ -77,7 +94,7 @@ const rollADie = function (options) {
   }
 
   for (let i = 0; i < numberOfDice; i++) {
-    const dieFace = Math.floor(Math.random() * 6) + 1;
+    const dieFace = values ? values[i] : Math.floor(Math.random() * 6) + 1;
     result.push(dieFace);
     const angle = {
       1: [90, 0],
@@ -101,7 +118,7 @@ const rollADie = function (options) {
 
     setTimeout(() => removeDieFromDOM(dieId), delay);
 
-    if(result.length === numberOfDice && callback) {
+    if (result.length === numberOfDice && callback) {
       callback(result);
     }
   }

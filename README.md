@@ -11,7 +11,7 @@ Load it into your HTML script
 ```
 <script type="text/javascript" src="path/to/roll-a-die.js"></script>
 ```
-You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@1.1.0/dist/roll-a-die.js`. Remember to update the package number to the most recent.
+You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@1.3.0/dist/roll-a-die.js`. Remember to update the package number to the most recent.
 
 Call the method with its options.
 ```
@@ -46,15 +46,17 @@ Call the method
 rollADie({ element, numberOfDice: 2, callback});
 rollADie({ element, numberOfDice: 2, callback, noSound: true});
 rollADie({ element, numberOfDice: 2, callback, delay: 1000});
+rollADie({ element, numberOfDice: 2, callback, values: [3, 4]});
 ```
 
 ## Parameter Definitions
 
-* `element`: The element to render die animation on.
-* `numberOfDice`: The number of dice to use.`
-* `callback`: Called when animation is finished. Returns an array of the values from throw.
-* `noSound`: Roll the die without sound (Optional).
-* `delay`: Time in milliseconds to delay before removing animations (Optional).
+* `element`: The element to render die animation on. Type: HTMLElement
+* `numberOfDice`: The number of dice to use.` Type: number
+* `callback`: Called when animation is finished. Returns an array of the values from throw. Type: Function
+* `noSound`: Roll the die without sound (Optional). Type: boolean
+* `delay`: Time in milliseconds to delay before removing animations (Optional). Type: number
+* `values`: Values to show on die face. When provided, it overrides library genrated values. (Optional). Type: Array of numbers
 
 ## Thanks
 * (Sound Effect)
