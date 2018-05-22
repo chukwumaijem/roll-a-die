@@ -53,7 +53,7 @@
     }
     function rollDiceWithoutValues() {
       const element = document.getElementById('dice-box1');
-      var numberOfDice = +document.getElementById('number1').value;
+      const numberOfDice = +document.getElementById('number1').value;
       const options = {
         element, // element to display the animated dice in.
         numberOfDice, // number of dice to use 
@@ -64,8 +64,9 @@
 
     function rollDiceWithValues() {
       const element = document.getElementById('dice-box2');
-      var numberOfDice = +document.getElementById('number2').value;
-      var valuesToThrow = +document.getElementById('values2').value.split(',');
+      const numberOfDice = +document.getElementById('number2').value;
+      const valuesToThrow = document.getElementById('values2')
+        .value.split(',').map(val => Number(val));
       const options = {
         element, // element to display the animated dice in.
         numberOfDice, // number of dice to use 
