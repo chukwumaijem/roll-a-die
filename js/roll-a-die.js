@@ -1,4 +1,5 @@
 import '../less/roll-a-die.less';
+
 const dieInDOM = [];
 function verifyParams(options) {
   const { numberOfDice, callback, element, delay, values } = options;
