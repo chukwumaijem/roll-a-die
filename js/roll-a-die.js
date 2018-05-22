@@ -19,16 +19,18 @@ function verifyParams(options) {
   if (delay && typeof delay !== 'number')
     throw new Error('Time is seconds. "delay" must be a number.');
 
-  if (values && !Array.isArray(values))
-    throw new Error('Values to generate. "values" must be an array of numbers.');
-  if (values.length !== numberOfDice)
-    throw new Error('The length of "values" must be equal to the numberOfDice.');
-  values.forEach(value => {
-    if (typeof value !== 'number')
-      throw new Error(`${value} in "values" must be a number.`);
-    if (!Number.isInteger(value))
-      throw new Error(`${value} in "values" must be an integer.`);
-  });
+  if (values) {
+    if (!Array.isArray(values))
+      throw new Error('Values to generate. "values" must be an array of numbers.');
+    if (values.length !== numberOfDice)
+      throw new Error('The length of "values" must be equal to the numberOfDice.');
+    values.forEach(value => {
+      if (typeof value !== 'number')
+        throw new Error(`${value} in "values" must be a number.`);
+      if (!Number.isInteger(value))
+        throw new Error(`${value} in "values" must be an integer.`);
+    });
+  }
 
 }
 
