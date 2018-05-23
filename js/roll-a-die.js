@@ -4,7 +4,7 @@ const dieInDOM = [];
 function verifyParams(options) {
   const { numberOfDice, callback, element, delay, values } = options;
   if (!element) throw new Error('Element to render dice animation not specified.');
-  if (!element instanceof HTMLElement)
+  if (!(element instanceof HTMLElement))
     throw new Error('"element" must be a HTMLElement')
   if (!numberOfDice) throw new Error('Number of dice to use not specified.');
   if (typeof numberOfDice !== 'number')
