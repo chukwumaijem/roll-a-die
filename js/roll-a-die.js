@@ -14,7 +14,7 @@ function verifyParams(options) {
 
   if (!callback) throw new Error('Provide a callback function to recieve dice values.');
   if (typeof callback !== 'function')
-    throw new Error('"callback" must be a function')
+    throw new Error('"callback" must be a function.')
 
   if (delay && typeof delay !== 'number')
     throw new Error('Time is seconds. "delay" must be a number.');
