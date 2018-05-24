@@ -1,37 +1,30 @@
 import '../less/roll-a-die.less';
+import Errors from './Types';
 
 const dieInDOM = [];
 function verifyParams(options) {
   const { numberOfDice, callback, element, delay, values } = options;
-  if (!element) throw new Error('Element to render dice animation not specified.');
-  if (!(element instanceof HTMLElement))
-    throw new Error('"element" must be a HTMLElement')
-  if (!numberOfDice) throw new Error('Number of dice to use not specified.');
-  if (typeof numberOfDice !== 'number')
-    throw new Error('"numberOfDice" must be a number.');
+  if (!element) throw new Error(Errors.MISSING_ELEMENT);
+  if (!(element instanceof HTMLElement)) throw new Error(Errors.INVALID_ELEMENT);
+
+  if (!numberOfDice) throw new Error(Errors.MISSING_NUMBER_OF_DICE);
+  if (typeof numberOfDice !== 'number') throw new Error(Errors.NUMBER_OF_DICE_NUMBER);
   if (!Number.isInteger(numberOfDice))
-    throw new Error('"numberOfDice" must be an integer.');
+    throw new Error(Errors.NUMBER_OF_DICE_INTEGER);
 
-  if (!callback) throw new Error('Provide a callback function to recieve dice values.');
-  if (typeof callback !== 'function')
-    throw new Error('"callback" must be a function.')
+  if (!callback) throw new Error(Errors.MISSING_CALLBACK);
+  if (typeof callback !== 'function') throw new Error(Errors.INVALID_CALLBACK);
 
-  if (delay && typeof delay !== 'number')
-    throw new Error('Time is seconds. "delay" must be a number.');
+  if (delay && typeof delay !== 'number') throw new Error(Errors.INVALID_DELAY_TYPE);
 
   if (values) {
-    if (!Array.isArray(values))
-      throw new Error('Values to generate. "values" must be an array of numbers.');
-    if (values.length !== numberOfDice)
-      throw new Error('The length of "values" must be equal to the numberOfDice.');
+    if (!Array.isArray(values)) throw new Error(Errors.INVALID_VALUES);
+    if (values.length !== numberOfDice) throw new Error(Errors.INVALID_VALUES_LENGTH);
     values.forEach(value => {
-      if (typeof value !== 'number')
-        throw new Error(`${value} in "values" must be a number.`);
-      if (!Number.isInteger(value))
-        throw new Error(`${value} in "values" must be an integer.`);
+      if (typeof value !== 'number') throw new Error(Errors.INVALID_VALUE_NUMBER(value));
+      if (!Number.isInteger(value)) throw new Error(Errors.INVALID_VALUE_INTEGER(value));
     });
   }
-
 }
 
 function playSound(outerContainer) {

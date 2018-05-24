@@ -1,7 +1,5 @@
-'use strict';
-
-jest.dontMock('../js/roll-a-die.js');
 import rollADie from '../js/roll-a-die';
+import Errors from '../js/Types';
 
 const element = document.createElement('div');
 
@@ -53,17 +51,15 @@ describe('Check For Required Params', () => {
   };
   test('should throw on missing element.', () => {
     const options = Object.assign({}, defaultOption, { element: null });
-    expect(() => rollADie(options))
-      .toThrow('Element to render dice animation not specified.');
+    expect(() => rollADie(options)).toThrow(Errors.MISSING_ELEMENT);
   });
   test('should throw on missing numberOfDice.', () => {
     const options = Object.assign({}, defaultOption, { numberOfDice: null });
-    expect(() => rollADie(options)).toThrow('Number of dice to use not specified.');
+    expect(() => rollADie(options)).toThrow(Errors.MISSING_NUMBER_OF_DICE);
   });
   test('should throw on missing callback function.', () => {
     const options = Object.assign({}, defaultOption, { callback: null });
-    expect(() => rollADie(options))
-      .toThrow('Provide a callback function to recieve dice values.');
+    expect(() => rollADie(options)).toThrow(Errors.MISSING_CALLBACK);
   });
 });
 
@@ -81,39 +77,45 @@ describe('Check For Invalid Params', () => {
 
   test('should throw on invalid element type.', () => {
     const options = Object.assign({}, defaultOption, { element: 'Hello World!' });
-    expect(() => rollADie(options)).toThrow('"element" must be a HTMLElement');
+    expect(() => rollADie(options)).toThrow(Errors.INVALID_ELEMENT);
   });
   test('should throw on invalid numberOfDice type.', () => {
     let options = Object.assign({}, defaultOption, { numberOfDice: true });
-    expect(() => rollADie(options)).toThrow('"numberOfDice" must be a number.');
+    expect(() => rollADie(options)).toThrow(Errors.NUMBER_OF_DICE_NUMBER);
     options = Object.assign({}, defaultOption, { numberOfDice: 2.9 });
-    expect(() => rollADie(options)).toThrow('"numberOfDice" must be an integer.');
+    expect(() => rollADie(options)).toThrow(Errors.NUMBER_OF_DICE_INTEGER);
   });
   test('should throw on invalid callback.', () => {
     const options = Object.assign({}, defaultOption, { callback: 34 });
-    expect(() => rollADie(options)).toThrow('"callback" must be a function.');
+    expect(() => rollADie(options)).toThrow(Errors.INVALID_CALLBACK);
   });
   test('should throw on invalid delay type.', () => {
     const options = Object.assign({}, defaultOption, { delay: '5000' });
     expect(() => rollADie(options))
-      .toThrow('Time is seconds. "delay" must be a number.');
+      .toThrow(Errors.INVALID_DELAY_TYPE);
   });
   test('should throw on invalid values type.', () => {
     const options = Object.assign({}, defaultOption,
       { values: { val: 'Hello World!' } });
     expect(() => rollADie(options))
-      .toThrow('Values to generate. "values" must be an array of numbers.');
+      .toThrow(Errors.INVALID_VALUES);
   });
   test('should throw on invalid values length.', () => {
     const options = Object.assign({}, defaultOption,
       { values: [4, 5, 6] });
     expect(() => rollADie(options))
-      .toThrow('The length of "values" must be equal to the numberOfDice.');
+      .toThrow(Errors.INVALID_VALUES_LENGTH);
   });
-  test('should throw on invalid value in values type.', () => {
+  test('should throw on invalid float value in values.', () => {
+    const options = Object.assign({}, defaultOption,
+      { values: [5.5, 6] });
+    expect(() => rollADie(options))
+      .toThrow(Errors.INVALID_VALUE_INTEGER(5.5));
+  });
+  test('should throw on invalid string value in values.', () => {
     const options = Object.assign({}, defaultOption,
       { values: [5, '6'] });
     expect(() => rollADie(options))
-      .toThrow('6 in "values" must be a number.');
+      .toThrow(Errors.INVALID_VALUE_NUMBER('6'));
   });
 });
