@@ -28,12 +28,13 @@ function verifyParams(options) {
 }
 
 function playSound(outerContainer) {
-  let played;
   const audio = document.createElement('audio');
   outerContainer.appendChild(audio);
   audio.src = require('./nc93322.mp3');
-  played = true;
   audio.play();
+  audio.onended = () => {
+    audio.remove();
+  };
 }
 
 function getFace(pips) {
