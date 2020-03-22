@@ -1,6 +1,6 @@
 {
   "name": "roll-a-die",
-  "version": "1.5.3",
+  "version": "1.5.5",
   "description": "Simple 3D dice roll using CSS3 animation.",
   "main": "dist/roll-a-die.js",
   "devDependencies": {
