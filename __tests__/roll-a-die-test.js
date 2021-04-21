@@ -10,14 +10,14 @@ describe('Roll A Die', function () {
 
   it('should roll a die successfully.', function () {
     const cb = (r) => r;
-    rollADie({ element, numberOfDice: 1, callback: cb, noSound: true });
-    rollADie({ element, numberOfDice: 2, callback: cb, noSound: true });
+    rollADie({ element, numberOfDice: 1, callback: cb, soundVolume: 0 });
+    rollADie({ element, numberOfDice: 2, callback: cb, soundVolume: 0 });
   });
 
   it('should call callback.', function () {
     let result;
     const cb = (r) => result = r;
-    rollADie({ element, numberOfDice: 1, callback: cb, noSound: true });
+    rollADie({ element, numberOfDice: 1, callback: cb, soundVolume: 0 });
     expect(result).toHaveLength(1);
   });
 
@@ -28,7 +28,7 @@ describe('Roll A Die', function () {
       element,
       numberOfDice: 2,
       callback: cb,
-      noSound: true,
+      soundVolume: 0,
       values: [4, 6],
     });
     expect(result).toHaveLength(2);
@@ -46,7 +46,7 @@ describe('Check For Required Params', () => {
     element,
     numberOfDice: 2,
     callback: cb,
-    noSound: true,
+    soundVolume: 0,
     values: [4, 6],
   };
   test('should throw on missing element.', () => {
@@ -72,7 +72,7 @@ describe('Check For Invalid Params', () => {
     element,
     numberOfDice: 2,
     callback: cb,
-    noSound: true,
+    soundVolume: 0,
   };
 
   test('should throw on invalid element type.', () => {

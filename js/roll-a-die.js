@@ -47,6 +47,7 @@ function verifyParams(options) {
 }
 
 function playSound(outerContainer, soundVolume) {
+  if (soundVolume === 0) return;
   const audio = document.createElement('audio');
   outerContainer.appendChild(audio);
   audio.src = require('./nc93322.mp3');
