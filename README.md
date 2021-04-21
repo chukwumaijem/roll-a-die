@@ -15,7 +15,7 @@ Load it into your HTML script
 <script type="text/javascript" src="path/to/roll-a-die.js"></script>
 ```
 
-You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@1.3.0/dist/roll-a-die.js`. Remember to update the package number to the most recent.
+You can use the [UNPKG](https://unpkg.com) link `https://unpkg.com/roll-a-die@2.0.1/dist/roll-a-die.js`. Remember to update the package number to the most recent.
 
 Call the method with its options.
 
@@ -56,8 +56,8 @@ Call the method
 ```
 rollADie({ element, numberOfDice: 2, callback });
 rollADie({ element, numberOfDice: 2, callback, soundVolume: 1 });
-rollADie({ element, numberOfDice: 2, callback, delay: 1000 });
-rollADie({ element, numberOfDice: 2, callback, values: [3, 4] });
+rollADie({ element, numberOfDice: 2, callback, delay: 1000, soundVolume: 0 }); // disable sound
+rollADie({ element, numberOfDice: 2, callback, values: [3, 4], soundVolume: 0.3 });
 ```
 
 ## Parameter Definitions
