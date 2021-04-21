@@ -54,10 +54,10 @@ import rollADie from 'roll-a-die';
 Call the method
 
 ```
-rollADie({ element, numberOfDice: 2, callback});
-rollADie({ element, numberOfDice: 2, callback, noSound: true});
-rollADie({ element, numberOfDice: 2, callback, delay: 1000});
-rollADie({ element, numberOfDice: 2, callback, values: [3, 4]});
+rollADie({ element, numberOfDice: 2, callback });
+rollADie({ element, numberOfDice: 2, callback, soundVolume: 1 });
+rollADie({ element, numberOfDice: 2, callback, delay: 1000 });
+rollADie({ element, numberOfDice: 2, callback, values: [3, 4] });
 ```
 
 ## Parameter Definitions
@@ -65,7 +65,7 @@ rollADie({ element, numberOfDice: 2, callback, values: [3, 4]});
 - `element`: The element to render die animation on. Type: HTMLElement
 - `numberOfDice`: The number of dice to use.` Type: number
 - `callback`: Called when animation is finished. Returns an array of the values from throw. Type: Function
-- `noSound`: Roll the die without sound (Optional). Type: boolean
+- `soundVolume`: Set volume of audio between 0 and 1. (Optional) Defaults to 1. Type: number
 - `delay`: Time in milliseconds to delay before removing animations (Optional). Type: number
 - `values`: Values to show on die face. When provided, it overrides library genrated values. (Optional). Type: Array of numbers
 
