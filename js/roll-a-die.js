@@ -3,7 +3,7 @@ import Errors from './Types';
 
 const dieInDOM = [];
 function verifyParams(options) {
-  const { numberOfDice, callback, element, delay, values } = options;
+  const { numberOfDice, callback, element, delay, values, soundVolume } = options;
   if (!element) throw new Error(Errors.MISSING_ELEMENT);
   if (!(element instanceof HTMLElement)) throw new Error(Errors.INVALID_ELEMENT);
 
@@ -25,12 +25,15 @@ function verifyParams(options) {
       if (!Number.isInteger(value)) throw new Error(Errors.INVALID_VALUE_INTEGER(value));
     });
   }
+  if (typeof soundVolume !== 'number') throw new Error(Errors.INVALID_SOUND_VOLUME);
+  if (soundVolume < 0 || soundVolume > 1) throw new Error(Errors.INVALID_SOUND_VOLUME);
 }
 
-function playSound(outerContainer) {
+function playSound(outerContainer, soundVolume) {
   const audio = document.createElement('audio');
   outerContainer.appendChild(audio);
   audio.src = require('./nc93322.mp3');
+  audio.volume = soundVolume;
   audio.play();
   audio.onended = () => {
     audio.remove();
@@ -74,7 +77,7 @@ function removeDieFromDOM(dieId) {
 }
 
 const rollADie = function (options) {
-  const { numberOfDice, callback, element, noSound, values } = options;
+  const { numberOfDice, callback, element, noSound, values, soundVolume } = options;
   let delay = options.delay || 3000;
   if (dieInDOM.length) {
     dieInDOM.forEach(die => removeDieFromDOM(die));
@@ -84,7 +87,7 @@ const rollADie = function (options) {
   const faces = 6;
   const result = [];
   if (!noSound) {
-    playSound(element);
+    playSound(element, soundVolume);
   }
 
   for (let i = 0; i < numberOfDice; i++) {

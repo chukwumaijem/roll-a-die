@@ -4,20 +4,20 @@
   "description": "Simple 3D dice roll using CSS3 animation.",
   "main": "dist/roll-a-die.js",
   "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.2",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^3.6.0",
     "file-loader": "^1.1.11",
     "identity-obj-proxy": "^3.0.0",
-    "jest-cli": "^25.1.0",
-    "less": "^3.0.4",
+    "jest-cli": "^25.5.4",
+    "less": "^3.13.1",
     "less-loader": "^4.1.0",
     "less-prefixer": "^1.0.0",
     "style-loader": "^0.21.0",
-    "url-loader": "^1.0.1",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "url-loader": "^1.1.2",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "scripts": {
     "test": "node_modules/.bin/jest",
@@ -47,5 +47,8 @@
   "homepage": "https://github.com/chukwumaijem/roll-a-die",
   "files": [
     "dist/roll-a-die.js"
-  ]
+  ],
+  "dependencies": {
+    "@babel/compat-data": "^7.13.12"
+  }
 }
