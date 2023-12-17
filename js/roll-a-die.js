@@ -122,37 +122,37 @@ const rollADie = function (options) {
     dieInDOM.push(dieId);
     const dice = appendDieContainers(dieId, element, angle);
     [
-      [{ cx: 16, cy: 16, r: 6, fill: 'red' }],
-      [
-        { cx: 8, cy: 8, r: 3 },
-        { cx: 24, cy: 24, r: 3 },
-      ],
-      [
-        { cx: 8, cy: 8, r: 3 },
-        { cx: 16, cy: 16, r: 3 },
-        { cx: 24, cy: 24, r: 3 },
-      ],
-      [
-        { cx: 8, cy: 8, r: 3 },
-        { cx: 24, cy: 24, r: 3 },
-        { cx: 8, cy: 24, r: 3 },
-        { cx: 24, cy: 8, r: 3 },
-      ],
-      [
-        { cx: 8, cy: 8, r: 3 },
-        { cx: 16, cy: 16, r: 3 },
-        { cx: 24, cy: 24, r: 3 },
-        { cx: 8, cy: 24, r: 3 },
-        { cx: 24, cy: 8, r: 3 },
-      ],
-      [
-        { cx: 8, cy: 8, r: 3 },
-        { cx: 24, cy: 24, r: 3 },
-        { cx: 8, cy: 16, r: 3 },
-        { cx: 24, cy: 16, r: 3 },
-        { cx: 8, cy: 24, r: 3 },
-        { cx: 24, cy: 8, r: 3 },
-      ],
+        [{ cx: 14, cy: 14, r: 6, fill: 'red' }],
+        [
+          { cx: 6, cy: 6, r: 3 },
+          { cx: 22, cy: 22, r: 3 },
+        ],
+        [
+          { cx: 6, cy: 6, r: 3 },
+          { cx: 14, cy: 14, r: 3 },
+          { cx: 22, cy: 22, r: 3 },
+        ],
+        [
+          { cx: 6, cy: 6, r: 3 },
+          { cx: 22, cy: 22, r: 3 },
+          { cx: 6, cy: 22, r: 3 },
+          { cx: 22, cy: 6, r: 3 },
+        ],
+        [
+          { cx: 6, cy: 6, r: 3 },
+          { cx: 14, cy: 14, r: 3 },
+          { cx: 22, cy: 22, r: 3 },
+          { cx: 6, cy: 22, r: 3 },
+          { cx: 22, cy: 6, r: 3 },
+        ],
+        [
+          { cx: 6, cy: 6, r: 3 },
+          { cx: 22, cy: 22, r: 3 },
+          { cx: 6, cy: 14, r: 3 },
+          { cx: 22, cy: 14, r: 3 },
+          { cx: 6, cy: 22, r: 3 },
+          { cx: 22, cy: 6, r: 3 },
+        ],
     ]
       .map(getFace)
       .forEach((face) => dice.appendChild(face));
